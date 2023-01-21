@@ -1,0 +1,10 @@
+# files
+*.pyc
+
+# VS Code Settings
+.vscode
+
+# folders
+venv/
+logs/
+MyData/
