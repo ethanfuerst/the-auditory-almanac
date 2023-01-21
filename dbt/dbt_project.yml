@@ -1,0 +1,23 @@
+name: "spotify_packaged"
+config-version: 2
+version: 1.3.2
+
+profile: "spotify_packaged"
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analysis"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+docs-paths: ["docs"]
+asset-paths: ["assets"]
+
+target-path: "target"
+log-path: "logs"
+clean-targets:
+  - "target"
+
+models:
+  spotify_packaged:
+    ref:
+      materialized: table

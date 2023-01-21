@@ -1,0 +1,26 @@
+version: 2
+
+macros:
+  - name: split_uri
+    description:
+      Removes 'spotify:{{ media_type }}:' from a uri.
+      Example input 'spotify:track:2G9rtsX5GNAmpB114xYkM9' and get '2G9rtsX5GNAmpB114xYkM9' back.
+    docs:
+      show: true
+    arguments:
+      - name: long_uri
+        type: string
+        description: Spotify uri from raw data
+  - name: uri_to_link
+    description:
+      Changes a uri to a link with a media_type. If media_type is local file then will return null.
+      Example input uri = '2G9rtsX5GNAmpB114xYkM9' and media_type = 'track' and get 'https://open.spotify.com/track/2G9rtsX5GNAmpB114xYkM9' back.
+    docs:
+      show: true
+    arguments:
+      - name: uri
+        type: string
+        description: Spotify uri from split_uri macro
+      - name: media_type
+        type: string
+        description: Media type. One of 'track', 'episode' or 'local file'

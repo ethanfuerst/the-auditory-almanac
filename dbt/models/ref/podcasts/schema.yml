@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: episodes
+    description: add later
+    columns:
+      - name: id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: episode_name
+        description: add later
+        tests:
+          - not_null
+      - name: uri
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_per_stream
+        description: add later
+        tests:
+          - not_null
+
+  - name: shows
+    description: add later
+    columns:
+      - name: id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: num_episodes_streamed
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_per_stream
+        description: add later
+        tests:
+          - not_null
