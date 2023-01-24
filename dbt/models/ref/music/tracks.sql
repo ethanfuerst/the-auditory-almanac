@@ -2,7 +2,8 @@ with
 
 tracks as (
     select
-        track
+        track_id as id
+        , track
         , artist
         , count(distinct id) as num_streams
 	    , count(distinct uri) as num_uris
@@ -11,14 +12,13 @@ tracks as (
         , max(stream_end) as most_recent_stream
         , sum(ms_played) as total_ms_played
         , string_agg(
-            distinct uri::text
-            , ','
-        ) as uris
-        , row_number() over (order by min(stream_start)) || '_track' as id
+                distinct uri::text
+                , ','
+            ) as uris
     from {{ ref('streams') }}
     where 1 = 1
         and media_type = 'track'
-    {{ dbt_utils.group_by(2) }}
+    {{ dbt_utils.group_by(3) }}
 )
 
 , final as (

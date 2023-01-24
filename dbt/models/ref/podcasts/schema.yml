@@ -3,6 +3,13 @@ version: 2
 models:
   - name: episodes
     description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - id
+            - show_name
+            - episode_name
+            - uri
     columns:
       - name: id
         description: add later
@@ -45,6 +52,11 @@ models:
 
   - name: shows
     description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - id
+            - show_name
     columns:
       - name: id
         description: add later

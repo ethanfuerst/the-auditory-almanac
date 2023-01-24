@@ -2,18 +2,18 @@ with
 
 episodes as (
     select
-        show_name
+        episode_id as id
+        , show_name
         , episode_name
         , uri
         , count(distinct id) as num_streams
         , min(stream_start) as first_stream
         , max(stream_end) as most_recent_stream
         , sum(ms_played) as total_ms_played
-        , row_number() over (order by min(stream_start)) || '_episode' as id
     from {{ ref('streams') }}
     where 1 = 1
         and media_type = 'episode'
-    {{ dbt_utils.group_by(3) }}
+    {{ dbt_utils.group_by(4) }}
 )
 
 , final as (

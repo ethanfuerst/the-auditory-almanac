@@ -2,23 +2,23 @@ with
 
 albums as (
     select
-        album
+        album_id as id
+        , album
         , artist
         , count(distinct id) as num_streams
 	    , count(distinct uri) as num_uris_streamed
-        -- num distinct tracks
+        -- num distinct tracks listened to
         , min(stream_start) as first_stream
         , max(stream_end) as most_recent_stream
         , sum(ms_played) as total_ms_played
         , string_agg(
-            distinct uri::text
-            , ','
-        ) as uris
-        , row_number() over (order by min(stream_start)) || '_album' as id
+                distinct uri::text
+                , ','
+            ) as uris
     from {{ ref('streams') }}
     where 1 = 1
         and media_type = 'track'
-    {{ dbt_utils.group_by(2) }}
+    {{ dbt_utils.group_by(3) }}
 )
 
 , final as (
@@ -34,6 +34,7 @@ albums as (
         , uris
         , total_ms_played::real / num_streams as avg_ms_played
         -- album metadata like release date
+        -- total number of tracks in an album
     from albums
     where 1 = 1
 )

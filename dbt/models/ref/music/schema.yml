@@ -3,6 +3,12 @@ version: 2
 models:
   - name: albums
     description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - id
+            - album
+            - artist
     columns:
       - name: id
         description: add later
@@ -49,6 +55,12 @@ models:
 
   - name: tracks
     description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - id
+            - track
+            - artist
     columns:
       - name: id
         description: add later

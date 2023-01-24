@@ -67,6 +67,16 @@ models:
         tests:
           - not_null
           - unique
+      - name: track_id
+        description: add later
+      - name: album_id
+        description: add later
+      - name: local_file_id
+        description: add later
+      - name: episode_id
+        description: add later
+      - name: show_id
+        description: add later
       - name: stream_start
         description: add later
         tests:
