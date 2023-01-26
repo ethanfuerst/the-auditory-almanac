@@ -19,5 +19,4 @@ clean-targets:
 
 models:
   spotify_packaged:
-    ref:
-      materialized: table
+    materialized: table
