@@ -1,153 +1,162 @@
 version: 2
 
 models:
-  - name: local_files
+  - name: shows_all_time
     description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - show_id
+            - show_name
     columns:
-      - name: id
-        description: add later
-        tests:
-          - not_null
-          - unique
-      - name: stream_id
-        description: add later
-        tests:
-          - not_null
-          - unique
-      - name: stream_start
-        description: add later
-        tests:
-          - not_null
-      - name: stream_end
-        description: add later
-        tests:
-          - not_null
-      - name: ms_played
-        description: add later
-        tests:
-          - not_null
-      - name: reason_start
-        description: add later
-        tests:
-          - not_null
-      - name: reason_end
-        description: add later
-        tests:
-          - not_null
-      - name: shuffle
-        description: add later
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: skipped
-        description: add later
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: offline
-        description: add later
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: incognito_mode
-        description: add later
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['true', 'false']
-
-  - name: streams
-    description: add later
-    columns:
-      - name: id
-        description: add later
-        tests:
-          - not_null
-          - unique
-      - name: track_id
-        description: add later
-      - name: album_id
-        description: add later
-      - name: local_file_id
-        description: add later
-      - name: episode_id
-        description: add later
       - name: show_id
         description: add later
-      - name: stream_start
-        description: add later
         tests:
           - not_null
-      - name: stream_end
-        description: add later
-        tests:
-          - not_null
-      - name: username
-        description: add later
-        tests:
-          - not_null
-      - name: platform
-        description: add later
-        tests:
-          - not_null
-      - name: ms_played
-        description: add later
-        tests:
-          - not_null
-      - name: conn_country
-        description: add later
-        tests:
-          - not_null
-      - name: uri
-        description: add later
-      - name: track
-        description: add later
-      - name: artist
-        description: add later
-      - name: album
-        description: add later
-      - name: episode_name
-        description: add later
+          - unique
       - name: show_name
         description: add later
-      - name: media_type
+        tests:
+          - not_null
+          - unique
+      - name: uris
         description: add later
         tests:
           - not_null
-          - accepted_values:
-              values: ['episode', 'track', 'local file']
-      - name: reason_start
+          - unique
+      - name: num_uris_streamed
         description: add later
         tests:
           - not_null
-      - name: reason_end
+      - name: num_streams
         description: add later
         tests:
           - not_null
-      - name: shuffle
+      - name: first_stream
         description: add later
         tests:
           - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: skipped
+      - name: most_recent_stream
         description: add later
         tests:
           - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: offline
+      - name: total_ms_played
         description: add later
         tests:
           - not_null
-          - accepted_values:
-              values: ['true', 'false']
-      - name: incognito_mode
+      - name: avg_ms_played
         description: add later
         tests:
           - not_null
-          - accepted_values:
-              values: ['true', 'false']
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: shows_monthly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - show_id
+            - show_name
+            - month
+    columns:
+      - name: show_id
+        description: add later
+        tests:
+          - not_null
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: month
+        description: add later
+        tests:
+          - not_null
+      - name: uris
+        description: add later
+        tests:
+          - not_null
+      - name: num_uris_streamed
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: shows_yearly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - show_id
+            - show_name
+            - year
+    columns:
+      - name: show_id
+        description: add later
+        tests:
+          - not_null
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: year
+        description: add later
+        tests:
+          - not_null
+      - name: uris
+        description: add later
+        tests:
+          - not_null
+      - name: num_uris_streamed
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later

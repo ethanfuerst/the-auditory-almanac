@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 with
 
 source_data as (
@@ -38,7 +44,7 @@ source_data as (
     select
         album
         , artist
-        , row_number() over (order by min(stream_start)) as album_id
+        , row_number() over (order by min(stream_start))::text as album_id
     from source_data
     where 1 = 1
         and media_type = 'track'
@@ -49,7 +55,7 @@ source_data as (
     select
         track
         , artist
-        , row_number() over (order by min(stream_start)) as track_id
+        , row_number() over (order by min(stream_start))::text as track_id
     from source_data
     where 1 = 1
         and media_type = 'track'
@@ -59,7 +65,7 @@ source_data as (
 , episodes as (
     select
         uri
-        , row_number() over (order by min(stream_start)) as episode_id
+        , row_number() over (order by min(stream_start))::text as episode_id
     from source_data
     where 1 = 1
         and media_type = 'episode'
@@ -69,7 +75,7 @@ source_data as (
 , shows as (
     select
         show_name
-        , row_number() over (order by min(stream_start)) as show_id
+        , row_number() over (order by min(stream_start))::text as show_id
     from source_data
     where 1 = 1
         and media_type = 'episode'

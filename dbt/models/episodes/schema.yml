@@ -1,0 +1,166 @@
+version: 2
+
+models:
+  - name: episodes_all_time
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - episode_id
+            - show_name
+            - episode_name
+            - uri
+    columns:
+      - name: episode_id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: episode_name
+        description: add later
+        tests:
+          - not_null
+      - name: uri
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: episodes_monthly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - episode_id
+            - show_name
+            - episode_name
+            - uri
+            - month
+    columns:
+      - name: episode_id
+        description: add later
+        tests:
+          - not_null
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: episode_name
+        description: add later
+        tests:
+          - not_null
+      - name: uri
+        description: add later
+        tests:
+          - not_null
+      - name: month
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: episodes_yearly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - episode_id
+            - show_name
+            - episode_name
+            - uri
+            - year
+    columns:
+      - name: episode_id
+        description: add later
+        tests:
+          - not_null
+      - name: show_name
+        description: add later
+        tests:
+          - not_null
+      - name: episode_name
+        description: add later
+        tests:
+          - not_null
+      - name: uri
+        description: add later
+        tests:
+          - not_null
+      - name: year
+        description: add later
+        tests:
+          - not_null
+      - name: num_streams
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later

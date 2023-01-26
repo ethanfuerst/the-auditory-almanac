@@ -1,106 +1,95 @@
 version: 2
 
 models:
-  - name: albums
+  - name: streams
     description: add later
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - id
-            - album
-            - artist
     columns:
       - name: id
         description: add later
         tests:
           - not_null
           - unique
-      - name: album
+      - name: track_id
+        description: add later
+      - name: album_id
+        description: add later
+      - name: local_file_id
+        description: add later
+      - name: episode_id
+        description: add later
+      - name: show_id
+        description: add later
+      - name: stream_start
         description: add later
         tests:
           - not_null
-      - name: artist
+      - name: stream_end
         description: add later
         tests:
           - not_null
-      - name: num_streams
+      - name: username
         description: add later
         tests:
           - not_null
-      - name: num_uris_streamed
+      - name: platform
         description: add later
         tests:
           - not_null
-      - name: first_stream
+      - name: ms_played
         description: add later
         tests:
           - not_null
-      - name: most_recent_stream
+      - name: conn_country
         description: add later
         tests:
           - not_null
-      - name: total_ms_played
+      - name: uri
         description: add later
-        tests:
-          - not_null
-      - name: uris
-        description: add later
-        tests:
-          - not_null
-          - unique
-      - name: avg_ms_played
-        description: add later
-        tests:
-          - not_null
-
-  - name: tracks
-    description: add later
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - id
-            - track
-            - artist
-    columns:
-      - name: id
-        description: add later
-        tests:
-          - not_null
-          - unique
       - name: track
         description: add later
-        tests:
-          - not_null
       - name: artist
         description: add later
-        tests:
-          - not_null
-      - name: num_uris
+      - name: album
+        description: add later
+      - name: episode_name
+        description: add later
+      - name: show_name
+        description: add later
+      - name: media_type
         description: add later
         tests:
           - not_null
-      - name: num_albums
+          - accepted_values:
+              values: ['episode', 'track', 'local file']
+      - name: reason_start
         description: add later
         tests:
           - not_null
-      - name: first_stream
+      - name: reason_end
         description: add later
         tests:
           - not_null
-      - name: most_recent_stream
+      - name: shuffle
         description: add later
         tests:
           - not_null
-      - name: total_ms_played
+          - accepted_values:
+              values: ['true', 'false']
+      - name: skipped
         description: add later
         tests:
           - not_null
-      - name: uris
+          - accepted_values:
+              values: ['true', 'false']
+      - name: offline
         description: add later
         tests:
           - not_null
-          - unique
-      - name: avg_ms_played
+          - accepted_values:
+              values: ['true', 'false']
+      - name: incognito_mode
         description: add later
         tests:
           - not_null
+          - accepted_values:
+              values: ['true', 'false']

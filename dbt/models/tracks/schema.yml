@@ -1,0 +1,152 @@
+version: 2
+
+models:
+  - name: tracks_all_time
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - track_id
+            - track
+            - artist
+    columns:
+      - name: track_id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: track
+        description: add later
+        tests:
+          - not_null
+      - name: artist
+        description: add later
+        tests:
+          - not_null
+      - name: num_uris
+        description: add later
+        tests:
+          - not_null
+      - name: num_albums
+        description: add later
+        tests:
+          - not_null
+      - name: uris
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: tracks_monthly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - track_id
+            - track
+            - artist
+            - month
+    columns:
+      - name: track_id
+        description: add later
+        tests:
+          - not_null
+      - name: track
+        description: add later
+        tests:
+          - not_null
+      - name: artist
+        description: add later
+        tests:
+          - not_null
+      - name: month
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: tracks_yearly
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - track_id
+            - track
+            - artist
+            - year
+    columns:
+      - name: track_id
+        description: add later
+        tests:
+          - not_null
+      - name: track
+        description: add later
+        tests:
+          - not_null
+      - name: artist
+        description: add later
+        tests:
+          - not_null
+      - name: year
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
