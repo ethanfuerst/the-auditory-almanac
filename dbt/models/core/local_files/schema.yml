@@ -1,0 +1,131 @@
+version: 2
+
+models:
+  - name: local_files_all_time
+    description: add later
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - local_file_id
+            - stream_id
+    columns:
+      - name: local_file_id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: stream_id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: stream_start
+        description: add later
+        tests:
+          - not_null
+      - name: stream_end
+        description: add later
+        tests:
+          - not_null
+      - name: ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: reason_start
+        description: add later
+        tests:
+          - not_null
+      - name: reason_end
+        description: add later
+        tests:
+          - not_null
+      - name: shuffle
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: skipped
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: offline
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: incognito_mode
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+
+  - name: local_files_monthly
+    description: add later
+    columns:
+      - name: month
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: num_local_files_streamed
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
+
+  - name: local_files_yearly
+    description: add later
+    columns:
+      - name: year
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: num_local_files_streamed
+        description: add later
+        tests:
+          - not_null
+      - name: first_stream
+        description: add later
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: add later
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: avg_ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: days_between_streams
+        description: add later
+      - name: streams_per_day
+        description: add later
