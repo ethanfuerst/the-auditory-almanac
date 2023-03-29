@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: stg_spotify__streams
+    description: add later
+    columns:
+      - name: id
+        description: add later
+        tests:
+          - not_null
+          - unique
+      - name: track_id
+        description: add later
+      - name: album_id
+        description: add later
+      - name: local_file_id
+        description: add later
+      - name: episode_id
+        description: add later
+      - name: show_id
+        description: add later
+      - name: stream_start
+        description: add later
+        tests:
+          - not_null
+      - name: stream_end
+        description: add later
+        tests:
+          - not_null
+      - name: username
+        description: add later
+        tests:
+          - not_null
+      - name: platform
+        description: add later
+        tests:
+          - not_null
+      - name: ms_played
+        description: add later
+        tests:
+          - not_null
+      - name: conn_country
+        description: add later
+        tests:
+          - not_null
+      - name: uri
+        description: add later
+      - name: track
+        description: add later
+      - name: artist
+        description: add later
+      - name: album
+        description: add later
+      - name: episode_name
+        description: add later
+      - name: show_name
+        description: add later
+      - name: media_type
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['episode', 'track', 'local file']
+      - name: reason_start
+        description: add later
+        tests:
+          - not_null
+      - name: reason_end
+        description: add later
+        tests:
+          - not_null
+      - name: shuffle
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: skipped
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: offline
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: incognito_mode
+        description: add later
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
