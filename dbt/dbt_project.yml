@@ -20,3 +20,5 @@ clean-targets:
 models:
   spotify_packaged:
     materialized: table
+    staging:
+      materialized: view

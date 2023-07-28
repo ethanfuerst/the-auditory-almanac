@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: albums
+    columns:
+      - name: album
+        description: Name of album
+        tests:
+          - not_null
+      - name: artist
+        description: Artist of album
+        tests:
+          - not_null
+      - name: uris
+        description: Spotify uris of tracks that have been streamed from the album separated by a comma
+        tests:
+          - not_null
+      - name: first_stream
+        description: First timestamp of stream_start
+        tests:
+          - not_null
+      - name: most_recent_stream
+        description: Most recent timestamp of stream_start
+        tests:
+          - not_null
+      - name: total_ms_played
+        description: Total ms played
+        tests:
+          - not_null

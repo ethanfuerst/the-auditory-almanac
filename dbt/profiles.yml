@@ -1,0 +1,6 @@
+spotify_packaged:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /tmp/dbt.duckdb
