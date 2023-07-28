@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: episode_streams
+    description: Records from stg_spotify__streams where media_type is 'episode'

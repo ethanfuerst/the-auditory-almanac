@@ -23,4 +23,4 @@ macros:
         description: Spotify uri from split_uri macro
       - name: media_type
         type: string
-        description: Media type. One of 'track', 'episode' or 'local file'
+        description: Media type. One of 'track', 'episode' or 'local_file'

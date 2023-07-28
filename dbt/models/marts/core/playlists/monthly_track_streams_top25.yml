@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: monthly_track_streams_top25
+    columns:
+      - name: month
+        description: Month of stream_start
+        tests:
+          - not_null
+      - name: uri
+        tests:
+          - not_null
+      - name: track
+        tests:
+          - not_null
+      - name: artist
+        tests:
+          - not_null
+      - name: ms_played
+        tests:
+          - not_null
+      - name: first_stream
+        tests:
+          - not_null
+      - name: most_recent_stream
+        tests:
+          - not_null
+      - name: num_streams
+        tests:
+          - not_null
+      - name: spotify_link
+        tests:
+          - not_null
+      - name: play_time_rank
+        tests:
+          - not_null
+      - name: avg_ms_played
+        tests:
+          - not_null
+      - name: days_between_streams
+        tests:
+          - not_null
+      - name: streams_per_day
+        tests:
+          - not_null
+      - name: binge_rank
