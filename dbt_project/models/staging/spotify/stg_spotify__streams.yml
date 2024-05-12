@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: stg_spotify__streams
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: stream_start
+        description: Approximate stream start time in local time
+        tests:
+          - not_null
+      - name: stream_end
+        description: Stream start time in local time
+        tests:
+          - not_null
+      - name: username
+        tests:
+          - not_null
+      - name: platform
+        tests:
+          - not_null
+      - name: ms_played
+        description: when aggregated, use the ms_to_minutes macro
+        tests:
+          - not_null
+      - name: conn_country
+        tests:
+          - not_null
+      - name: uri
+      - name: track
+      - name: artist
+      - name: album
+      - name: episode_name
+      - name: show_name
+      - name: media_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['episode', 'track', 'local_file']
+      - name: reason_start
+      - name: reason_end
+      - name: shuffle
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: skipped
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: offline
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+      - name: incognito_mode
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']

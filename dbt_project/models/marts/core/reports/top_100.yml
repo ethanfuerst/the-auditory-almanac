@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: top_100
+    columns:
+      - name: play_time_rank
+        tests:
+          - not_null
+      - name: track
+        tests:
+          - not_null
+      - name: artist
+        tests:
+          - not_null
+      - name: number_of_streams
+        tests:
+          - not_null
+      - name: spotify_link
+        tests:
+          - not_null

@@ -1,0 +1,8 @@
+the_auditory_almanac:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ./data/dbt.db
+      schema: the_auditory_almanac
+      threads: 16

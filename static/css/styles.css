@@ -1,0 +1,124 @@
+/* Base definitions and color scheme */
+:root {
+    --background-color: #171717; /* Dark background */
+    --text-color: #E0E0E0; /* Light text */
+    --accent-color: #1DB954; /* Accent color for borders or buttons */
+    --container-bg-color: white; /* Background color for containers */
+    --container-text-color: black; /* Text color for containers */
+}
+
+/* Global styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Content wrapper styles */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 5px solid var(--accent-color);
+    border-radius: 25px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 960px;
+    box-sizing: border-box;
+    background-color: var(--container-bg-color);
+    color: var(--container-text-color);
+}
+
+/* Button and input styles */
+input[type="submit"], button, .custom-file-upload {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Hover effects */
+.custom-file-upload:hover, input[type="submit"]:hover, button:hover {
+    background-color: #12883D; /* Darker shade of green for hover effect */
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Adjusted to align content to the top */
+    text-align: center;
+    border: 5px solid var(--accent-color);
+    border-radius: 25px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 960px;
+    box-sizing: border-box;
+    background-color: var(--container-bg-color);
+    color: var(--container-text-color);
+    min-height: 80vh;
+    overflow: auto; /* Ensures content overflow is handled */
+}
+
+/* Table styles */
+.data-table, .table-container {
+    margin: auto;
+    display: block;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    width: 100%;
+}
+
+.data-table {
+    width: 100%; /* Ensures table is not wider than its container */
+    max-width: 100%; /* Prevents the table from extending beyond the container width */
+    overflow-x: auto; /* Allows horizontal scrolling for tables wider than the container */
+}
+
+/* Text styles */
+h2, p {
+    margin: 20px 0;
+}
+
+.data th {
+    text-align: center;
+}
+
+.github-corner {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.github-corner a {
+    color: white; /* Change as needed */
+    font-size: 24px; /* Adjust the size of the icon */
+}
+
+.github-corner i {
+    margin-right: 5px;
+}

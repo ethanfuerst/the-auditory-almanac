@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: spotify_raw
+    tables:
+      - name: endsong
+        meta:
+          external_location: "read_json_auto('uploads/**/*.json', format='array')"
+        columns:
+          - name: ts
+          - name: username
+          - name: platform
+          - name: ms_played
+          - name: conn_country
+          - name: ip_addr_decrypted
+          - name: user_agent_decrypted
+          - name: master_metadata_track_name
+          - name: master_metadata_album_artist_name
+          - name: master_metadata_album_album_name
+          - name: spotify_track_uri
+          - name: episode_name
+          - name: episode_show_name
+          - name: spotify_episode_uri
+          - name: reason_start
+          - name: reason_end
+          - name: shuffle
+          - name: skipped
+          - name: offline
+          - name: offline_timestamp
+          - name: incognito_mode

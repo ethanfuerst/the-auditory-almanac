@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: top_binged
+    columns:
+      - name: year
+        tests:
+          - not_null
+      - name: binge_rank
+        tests:
+          - not_null
+      - name: track
+        tests:
+          - not_null
+      - name: artist
+        tests:
+          - not_null
+      - name: minutes_played
+        tests:
+          - not_null
+      - name: spotify_link
+        tests:
+          - not_null

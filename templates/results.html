@@ -1,0 +1,15 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}The Auditory Almanac{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Here are your results</h1>
+        {% for info in table_info %}
+            <h2>{{ info.title }}</h2>
+            <p>{{ info.description }}</p>
+            {{ info.table|safe }}
+        {% endfor %}
+    </div>
+{% endblock %}
