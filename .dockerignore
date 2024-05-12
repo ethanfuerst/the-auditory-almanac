@@ -1,0 +1,7 @@
+logs/
+MyData/
+.venv
+.vscode
+__pycache__
+uploads/
+.env
