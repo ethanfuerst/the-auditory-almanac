@@ -3,7 +3,7 @@ import duckdb
 import pandas as pd
 import re
 
-DUCKDB_DB_FILE = "../data/dbt.db"  # check that this is correct
+DUCKDB_DB_FILE = "data/dbt.db"
 
 
 def to_title_case(input_string) -> str:
@@ -34,7 +34,9 @@ def query_and_clean_df(query) -> pd.DataFrame:
     con.close()
     df = linkify_tracks(df)
     df.columns = [to_title_case(col) for col in df.columns]
-    return df.drop(columns=["Spotify Link"])
+    if "Spotify Link" in df.columns:
+        df = df.drop(columns=["Spotify Link"])
+    return df
 
 
 def top_100_songs() -> pd.DataFrame:

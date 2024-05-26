@@ -5,7 +5,7 @@ import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
 from utils.process_data import build_tables
-from utils.spotify_connect import top_100_songs, top_binged_songs
+from utils.spotify_connect import query_and_clean_df, top_100_songs, top_binged_songs
 
 
 app = Flask(__name__)
@@ -15,6 +15,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "DEFAULT_FOR_TESTING")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    app.logger.info('Home page accessed')
     if request.method != "POST":
         return render_template("index.html")
 
@@ -46,6 +47,9 @@ def index():
 @app.route("/process_files")
 def process_files():
     build_tables()
+    app.logger.info('process_files accessed')
+    dbt_build_logs = query_and_clean_df("select * from the_auditory_almanac.process_files_log;")
+    app.logger.info(f"Data build logs: {dbt_build_logs}")
     session["FILES_PROCESSED"] = True
     flash("Files processed successfully", "files_processed")
     return redirect(url_for("index"))
