@@ -5,7 +5,7 @@ sources:
     tables:
       - name: endsong
         meta:
-          external_location: "read_json_auto('uploads/**/*.json', format='array')"
+          external_location: "read_json_auto('uploads/**/*.json')"
         columns:
           - name: ts
           - name: username
