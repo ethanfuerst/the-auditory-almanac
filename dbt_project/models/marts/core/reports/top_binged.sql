@@ -9,12 +9,12 @@ with
             , spotify_link
         from {{ ref('int_yearly_track_streams') }}
         where streams_per_day > 1
-        and minutes_played >= 10
+        and minutes_played >= 20
     )
 
 select
     year
-    , row_number() over (partition by year order by streams_per_day desc) as binge_rank
+    , dense_rank() over (partition by year order by streams_per_day desc, minutes_played desc) as binge_rank
     , track
     , artist
     , minutes_played

@@ -11,6 +11,8 @@ with
             1
             , 2
             , 3
+        order by
+            minutes_played desc
         limit 100
     )
 
