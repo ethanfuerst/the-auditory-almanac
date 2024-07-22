@@ -1,18 +1,16 @@
 <!-- templates/processing_files.html -->
 {% extends "base.html" %}
 
-{% block title %}Processing Files{% endblock %}
+{% block title %}Processed Files{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>Processing Your Files</h1>
-    <p>Please wait while we process your files...</p>
     {% with messages = get_flashed_messages(category_filter=["files_processed"]) %}
         {% if messages %}
-            <p>Files have been processed. You can now view the results.</p>
+            <h1>Files have been processed. You can now view the results.</h1>
             <button onclick="location.href='{{ url_for('view_results') }}'" type="button">View Results</button>
         {% else %}
-            <p>Processing...</p>
+            <h1>Error processing files. Please try again.</h1>
         {% endif %}
     {% endwith %}
 </div>

@@ -36,9 +36,17 @@
                 {% endfor %}
             </ul>
             {% if 'success' in messages|map(attribute='0') %}
-                <button onclick="location.href='{{ url_for('process_files') }}'" type="button">Proceed to Processing</button>
+                <button id="process-files-button" onclick="startProcessing()" type="button">Process Files</button>
+                <div id="processing-message" style="display: none; margin-top: 10px;">Files are processing, please wait...</div>
             {% endif %}
         {% endif %}
     {% endwith %}
 </div>
+
+<script>
+function startProcessing() {
+    document.getElementById('processing-message').style.display = 'block';
+    window.location.href = "{{ url_for('process_files') }}";
+}
+</script>
 {% endblock %}
