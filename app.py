@@ -13,55 +13,58 @@ app.config["UPLOAD_FOLDER"] = "uploads"
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "DEFAULT_FOR_TESTING")
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    app.logger.info('Home page accessed')
-    if request.method != "POST":
-        return render_template("index.html")
-
-    if "files" not in request.files:
-        flash("No files part")
-        return redirect(request.url)
-
-    uploaded_files = request.files.getlist("files")
-
-    if not uploaded_files or uploaded_files[0].filename == "":
-        flash("No selected files")
-        return redirect(request.url)
-
-    if not any(fnmatch.fnmatch(file.filename, "*.json") for file in uploaded_files):
-        flash("No .json files found!")
-        return redirect(request.url)
-
-    for file in uploaded_files:
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config["UPLOAD_FOLDER"], "MyData")
-        if not os.path.exists(file_path):
-            os.makedirs(file_path)
-        file.save(os.path.join(file_path, filename))
-        flash("File(s) successfully uploaded", "files_uploaded")
-
-    return redirect(url_for("index"))
+    return render_template("index.html")
 
 
-@app.route("/process_files")
+@app.route("/upload-files", methods=["GET", "POST"])
+def upload_files():
+    if request.method == "POST":
+        uploaded_files = request.files.getlist("files")
+        if not uploaded_files:
+            flash("No files selected", "error")
+            return redirect(url_for("upload_files"))
+
+        if not os.path.exists(app.config["UPLOAD_FOLDER"]):
+            os.makedirs(app.config["UPLOAD_FOLDER"])
+
+        for file in uploaded_files:
+            if file.filename == "":
+                flash("No selected files", "error")
+                continue
+
+            filename = secure_filename(file.filename)
+            if not filename.endswith(".json"):
+                flash(f"Invalid file type for {filename}", "error")
+                continue
+
+            file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            try:
+                file.save(file_path)
+                flash("Files successfully uploaded", "success")
+            except Exception as e:
+                flash(f"Failed to save file {filename}: {str(e)}", "error")
+
+        return redirect(url_for("upload_files"))
+
+    return render_template("upload-files.html")
+
+
+@app.route("/process-files")
 def process_files():
     build_tables()
-    app.logger.info('process_files accessed')
-    dbt_build_logs = query_and_clean_df("select * from the_auditory_almanac.process_files_log;")
+    app.logger.info("process_files accessed")
+    dbt_build_logs = query_and_clean_df(
+        "select * from the_auditory_almanac.process_files_log;"
+    )
     app.logger.info(f"Data build logs: {dbt_build_logs}")
     session["FILES_PROCESSED"] = True
     flash("Files processed successfully", "files_processed")
-    return redirect(url_for("index"))
+    return render_template("processing-files.html")
 
 
-@app.route("/create-reports")
-def create_reports():
-    top_100_songs()
-    return redirect(url_for("index"))
-
-
-@app.route("/view_results")
+@app.route("/view-results")
 def view_results():
     top_100 = top_100_songs()
     top_binged = top_binged_songs()

@@ -1,0 +1,32 @@
+<!-- templates/upload-files.html -->
+{% extends "base.html" %}
+
+{% block title %}The Auditory Almanac{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Upload your files here</h1>
+    <form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">Choose Files</label>
+        <input id="file-upload" type="file" name="files" accept=".json" multiple style="display: none;">
+        <input type="submit" value="Upload" id="upload-button" style="display: none;">
+    </form>
+    <script>
+    document.getElementById('file-upload').onchange = function() {
+        this.form.submit();
+    };
+    </script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% if 'success' in messages|map(attribute='0') %}
+                <button onclick="location.href='{{ url_for('process_files') }}'" type="button">Proceed to Processing</button>
+            {% endif %}
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

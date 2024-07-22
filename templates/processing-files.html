@@ -1,0 +1,19 @@
+<!-- templates/processing_files.html -->
+{% extends "base.html" %}
+
+{% block title %}Processing Files{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Processing Your Files</h1>
+    <p>Please wait while we process your files...</p>
+    {% with messages = get_flashed_messages(category_filter=["files_processed"]) %}
+        {% if messages %}
+            <p>Files have been processed. You can now view the results.</p>
+            <button onclick="location.href='{{ url_for('view_results') }}'" type="button">View Results</button>
+        {% else %}
+            <p>Processing...</p>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

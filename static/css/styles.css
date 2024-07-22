@@ -73,13 +73,12 @@ input[type="submit"], button, .custom-file-upload {
     border: 5px solid var(--accent-color);
     border-radius: 25px;
     padding: 20px;
-    margin: 20px auto;
+    margin: 0 auto;
     width: 80%;
     max-width: 960px;
     box-sizing: border-box;
     background-color: var(--container-bg-color);
     color: var(--container-text-color);
-    min-height: 80vh;
     overflow: auto; /* Ensures content overflow is handled */
 }
 

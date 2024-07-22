@@ -4,7 +4,7 @@
 {% block title %}The Auditory Almanac{% endblock %}
 
 {% block content %}
-    <div class="content-wrapper">
+    <div class="container">
         <h1>Welcome to the Auditory Almanac!</h1>
         <p>
             Do you wish Spotify Wrapped contained your listening data for the whole year and not just through November?
@@ -23,66 +23,7 @@
             Step 4: Click the process button to get all your top songs of each year throughout the entire time you've had Spotify!
         </p>
         <h3>Upload .json files below</h3>
-        
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
 
-        <form action="/" method="POST" enctype="multipart/form-data">
-            <label for="file-upload" class="custom-file-upload">Choose Files</label>
-            <input id="file-upload" type="file" name="files" accept=".json" multiple style="display: none;">
-            <input type="submit" value="Upload" id="upload-button" style="display: none;">
-        </form>
-
-        <button id="processFiles" style="display:none;">Process</button>
-        
-        <div id="processingMessage" style="display:none;">Processing your files, please wait...</div>
-        <script>
-            let processButton = document.getElementById("processFiles");
-            let processingMessage = document.getElementById("processingMessage");
-            let fileUpload = document.getElementById('file-upload');
-            let uploadButton = document.getElementById('upload-button');
-            let fileUploadLabel = document.querySelector('label[for="file-upload"]');
-        
-            {% if get_flashed_messages(category_filter=["files_uploaded"]) %}
-                processButton.style.display = "block";
-            {% endif %}
-            
-            processButton.addEventListener('click', function() {
-                processingMessage.style.display = "block";
-                processButton.style.display = "none";
-                window.location.href = "{{ url_for('process_files') }}";
-            });
-        
-            fileUpload.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    uploadButton.style.display = 'block';
-                } else {
-                    uploadButton.style.display = 'none';
-                }
-            });
-        
-            uploadButton.addEventListener('click', function() {
-                fileUpload.style.display = 'none';
-                fileUploadLabel.style.display = 'none';
-                this.style.display = 'none';
-            });
-        </script>
-        
-        {% if session.get('FILES_PROCESSED', False) %}
-            <button id="viewResultsButton">View Results</button>
-
-            <script>
-                document.getElementById('viewResultsButton').addEventListener('click', function() {
-                    window.location.href = "{{ url_for('view_results') }}";
-                });
-            </script>
-        {% endif %}
+        <button onclick="location.href='{{ url_for('upload_files') }}'" type="button">Upload Files</button>
     </div>
 {% endblock %}
