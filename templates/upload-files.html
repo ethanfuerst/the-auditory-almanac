@@ -6,6 +6,18 @@
 {% block content %}
 <div class="container">
     <h1>Upload your files here</h1>
+    <p>
+        They will be in a folder called MyData and will be called something like <i>Streaming_History_Audio_2018-2019_0.json</i> or <i>StreamingHistory_music_0.json</i>.
+    </p>
+    <p>
+        If you have multiple, select all of them.
+    </p>
+    <p>
+        Some may be called <i>Streaming_History_Video_2017-2024.json</i>, but we just need the records for audio.
+    </p>
+    <p>
+        You might have 2 different file types: music (something like <i>StreamingHistory_music_0.json</i>) and podcasts (something like <i>StreamingHistory_podcast_0.json</i>). Be sure to select both.
+    </p>
     <form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
         <label for="file-upload" class="custom-file-upload">Choose Files</label>
         <input id="file-upload" type="file" name="files" accept=".json" multiple style="display: none;">
