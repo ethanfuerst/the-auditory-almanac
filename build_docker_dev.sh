@@ -7,7 +7,7 @@ TIMESTAMP=$(date +%Y%m%d-%H%M)
 docker build -t ${IMAGE_NAME}:${COMMIT_HASH}-${TIMESTAMP} .
 
 if [ $? -eq 0 ]; then
-    echo "Docker image built successfully: ${IMAGE_NAME}:${COMMIT_HASH}-${TIMESTAMP}"
+    echo "Docker image for development built successfully: ${IMAGE_NAME}:${COMMIT_HASH}-${TIMESTAMP}"
 else
     echo "Error: Docker build failed"
     exit 1
