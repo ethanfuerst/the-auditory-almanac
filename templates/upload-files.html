@@ -59,6 +59,9 @@
         }
     }
     </script>
+    <p>
+        If you have the correct files, upload them below.
+    </p>
     <form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
         <label for="file-upload" class="custom-file-upload">Choose Files</label>
         <input id="file-upload" type="file" name="files" accept=".json" multiple style="display: none;">
