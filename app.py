@@ -7,10 +7,15 @@ from werkzeug.utils import secure_filename
 from utils.process_data import build_tables
 from utils.spotify_connect import query_and_clean_df, top_100_songs, top_binged_songs
 
-
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "DEFAULT_FOR_TESTING")
+
+secret_key = os.environ.get("SECRET_KEY")
+if not secret_key:
+    raise ValueError(
+        "No SECRET_KEY set for Flask application. Did you forget to set it?"
+    )
+app.config["SECRET_KEY"] = secret_key
 
 
 @app.route("/")
