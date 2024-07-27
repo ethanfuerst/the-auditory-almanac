@@ -53,15 +53,20 @@ def upload_files():
 
 @app.route("/process-files")
 def process_files():
-    build_tables()
-    app.logger.info("process_files accessed")
-    dbt_build_logs = query_and_clean_df(
-        "select * from the_auditory_almanac.process_files_log;"
-    )
-    app.logger.info(f"Data build logs: {dbt_build_logs}")
-    session["FILES_PROCESSED"] = True
-    flash("Files processed successfully", "files_processed")
-    return render_template("processing-files.html")
+    try:
+        build_tables()
+        app.logger.info("Files processed")
+        dbt_build_logs = query_and_clean_df(
+            "select * from the_auditory_almanac.process_files_log;"
+        )
+        app.logger.info(f"Data build logs: {dbt_build_logs}")
+        session["FILES_PROCESSED"] = True
+        flash("Files processed successfully", "files_processed")
+    except Exception as e:
+        flash(f"Error processing files: {str(e)}", "error")
+        return redirect(url_for("upload_files"))
+
+    return redirect(url_for("view_results"))
 
 
 @app.route("/view-results")
