@@ -18,6 +18,47 @@
     <p>
         You might have 2 different file types: music (something like <i>StreamingHistory_music_0.json</i>) and podcasts (something like <i>StreamingHistory_podcast_0.json</i>). Be sure to select both.
     </p>
+    <p>
+        If your .json files do not have the following fields, you will need to <a href="https://support.spotify.com/us/article/contact-us/" target="_blank">contact spotify support</a> and ask for your extended streaming history, not just your streaming history.
+    </p>
+    <button id="show-fields-button" onclick="toggleFields()" style="margin-bottom: 20px;">Show Required Fields</button>
+    <div id="required-fields" style="display: none;">
+        <p>
+            The fields we need are:
+        </p>
+        <ul>
+            <li>ts</li>
+            <li>username</li>
+            <li>platform</li>
+            <li>ms_played</li>
+            <li>conn_country</li>
+            <li>master_metadata_track_name</li>
+            <li>master_metadata_album_artist_name</li>
+            <li>master_metadata_album_album_name</li>
+            <li>episode_name</li>
+            <li>episode_show_name</li>
+            <li>spotify_track_uri</li>
+            <li>reason_start</li>
+            <li>reason_end</li>
+            <li>shuffle</li>
+            <li>skipped</li>
+            <li>offline</li>
+            <li>incognito_mode</li>
+        </ul>
+    </div>
+    <script>
+    function toggleFields() {
+        var fields = document.getElementById("required-fields");
+        var button = document.getElementById("show-fields-button");
+        if (fields.style.display === "none") {
+            fields.style.display = "block";
+            button.textContent = "Hide Required Fields";
+        } else {
+            fields.style.display = "none";
+            button.textContent = "Show Required Fields";
+        }
+    }
+    </script>
     <form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
         <label for="file-upload" class="custom-file-upload">Choose Files</label>
         <input id="file-upload" type="file" name="files" accept=".json" multiple style="display: none;">
