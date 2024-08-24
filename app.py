@@ -42,6 +42,7 @@ def upload_files():
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             try:
                 file.save(file_path)
+                app.logger.info(f"File saved: {file_path}")
                 flash("Files successfully uploaded", "success")
             except Exception as e:
                 flash(f"Failed to save file {filename}: {str(e)}", "error")
@@ -54,6 +55,9 @@ def upload_files():
 @app.route("/process-files")
 def process_files():
     try:
+        uploaded_files = os.listdir(app.config["UPLOAD_FOLDER"])
+        app.logger.info(f"Files in upload folder: {uploaded_files}")
+
         build_tables()
         app.logger.info("Files processed")
         dbt_build_logs = query_and_clean_df(
