@@ -7,3 +7,4 @@ Potential features to be added:
  - add tests
  - github action to run tests on pull request
  - spotify auth to create playlists
+ - use [pyscript](https://github.com/pyscript/pyscript) for visualizations?

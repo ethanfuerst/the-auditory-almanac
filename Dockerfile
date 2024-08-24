@@ -11,6 +11,7 @@ COPY . .
 
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
+ENV SECRET_KEY secret_key
 
 EXPOSE 8000
 

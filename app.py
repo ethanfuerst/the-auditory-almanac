@@ -10,12 +10,7 @@ from utils.spotify_connect import query_and_clean_df, top_100_songs, top_binged_
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
 
-secret_key = os.environ.get("SECRET_KEY")
-if not secret_key:
-    raise ValueError(
-        "No SECRET_KEY set for Flask application. Did you forget to set it?"
-    )
-app.config["SECRET_KEY"] = secret_key
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 
 @app.route("/")

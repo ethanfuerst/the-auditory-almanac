@@ -9,17 +9,3 @@ services:
       - SECRET_KEY=${SECRET_KEY}
     volumes:
       - .:/app
-    depends_on:
-      - db
-
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: auditory_almanac
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
