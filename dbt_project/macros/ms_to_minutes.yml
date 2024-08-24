@@ -1,0 +1,14 @@
+version: 2
+
+macros:
+  - name: ms_to_minutes
+    description:
+      Converts ms column to minutes. Use on aggregated data. Rounds to the nearest minute.
+      Example input 1000000 and get 17 back.
+    docs:
+      show: true
+    arguments:
+      - name: ms
+        type: int
+        description: Milliseconds from raw data
+

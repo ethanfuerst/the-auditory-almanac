@@ -1,11 +1,18 @@
 # files
 *.pyc
 .cache
+.user.yml
+.env
 
 # VS Code Settings
 .vscode
 
 # folders
-venv/
+.venv/
 logs/
 MyData/
+uploads/
+__pycache__/
+dbt_packages/
+data/
+sample_data/

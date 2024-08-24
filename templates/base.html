@@ -1,0 +1,22 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Default Title{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer>
+            <div class="github-corner">
+                <a href="https://github.com/ethanfuerst/the-auditory-almanac" target="_blank" title="View Source on GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </footer>
+    </body>
+</html>
