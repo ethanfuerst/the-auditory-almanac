@@ -44,18 +44,12 @@ To run The Auditory Almanac locally using Docker, follow these steps:
    cd the-auditory-almanac
    ```
 
-3. Build the Docker image:
+3. Run the build script to build and run the Docker container:
    ```
-   docker build -t auditory-almanac .
+   ./build_docker_dev.sh
    ```
 
-4. Run the Docker container:
-   ```
-   docker run -p 5000:5000 -e SECRET_KEY=your_secret_key auditory-almanac
-   ```
-   Replace `your_secret_key` with a secure secret key for your Flask application.
-
-5. Open your web browser and navigate to `http://localhost:5000` to access the application.
+4. Open your web browser and navigate to `http://localhost:5000` to access the application.
 
 Note: Make sure to upload your Spotify streaming history JSON files through the application's interface once it's running.
 
